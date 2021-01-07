@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
 
-import Counter from './components/Counter';
+import Hello from './components/Hello';
 
 function App() {
   return (
     <>
-      <Counter />
+    <Hello message="Alexandre" />
+    <Hello message="Senama DevSuperior 2" />
+    <Hello message="DevSuperior" />
     </>
   );
 }
