@@ -1,8 +1,12 @@
 import React from 'react';
 
-function Hello() {
+type Props = {
+  message: String;
+}
+
+function Hello({ message }: Props) {
   return (
-    <h1>Hello World usando componentes!</h1>
+    <h1>Hello { message }!</h1>
   );
 }
 

@@ -5,7 +5,11 @@ import Hello from './components/Hello';
 
 function App() {
   return (
-    <Hello />
+    <>
+    <Hello message="Alexandre" />
+    <Hello message="Senama DevSuperior 2" />
+    <Hello message="DevSuperior" />
+    </>
   );
 }
 
