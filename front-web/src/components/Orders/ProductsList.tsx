@@ -2,18 +2,20 @@ import React from 'react';
 
 import ProductCard from './ProductCard';
 
-function ProductsList() {
+import { Product } from './types';
+
+type Props = {
+  products: Product[];
+}
+
+function ProductsList({ products }: Props) {
   return (
     <div className="orders-list-container">
       <div className="orders-list-items">
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        {products.map(
+          product => (
+            <ProductCard key={product.id} product={product}/>
+        ))}
       </div>
     </div>
   );
