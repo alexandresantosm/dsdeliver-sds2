@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import StepsHeader from './SetpsHeader';
 import ProductsList from './ProductsList';
+import OrderLocation from './OrderLocation';
 
 import './styles.css';
 
@@ -25,6 +26,7 @@ function Orders() {
     <div className="orders-container">
       <StepsHeader />
       <ProductsList products={products}/>
+      <OrderLocation />
     </div>
   );
 }
