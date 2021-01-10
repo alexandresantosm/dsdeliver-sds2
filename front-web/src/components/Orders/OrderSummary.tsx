@@ -1,17 +1,26 @@
 import React from 'react';
 
-function OrderSummary() {
+import { formatPrice } from './helpers';
+
+type Props = {
+  amount: number;
+  totalPrice: number;
+}
+
+function OrderSummary({ amount, totalPrice }: Props) {
   return (
     <div className="order-summary-container">
       <div className="order-summary-content">
         <div>
           <span className="amount-selected-container">
-            <strong className="amount-selected">2</strong>
+            <strong className="amount-selected">{amount}</strong>
             PEDIDOS SELECIONADOS
           </span>
 
           <span className="amount-selected-container">
-            <strong className="amount-selected">R$ 75,00</strong>
+            <strong className="amount-selected">
+              {formatPrice(totalPrice)}
+            </strong>
             VALOR TOTAL
           </span>
         </div>

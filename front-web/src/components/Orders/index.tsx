@@ -10,10 +10,15 @@ import './styles.css';
 
 import { Product, OrderLocationData } from './types';
 import { fetchProducts } from '../../api';
+import { checkIsSelected } from './helpers';
 
 function Orders() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
   const [orderLoaction, seOrderLocation] = useState<OrderLocationData>();  
+  const totalPrice = selectedProducts.reduce((sum, product) => {
+    return sum + product.price
+  }, 0);
 
   useEffect(() => {
     fetchProducts()
@@ -25,13 +30,31 @@ function Orders() {
       );
   }, []);
 
+  const handleSelectProduct = (product: Product) => {
+    const isAlreadySelected = checkIsSelected(selectedProducts, product);
+  
+    if (isAlreadySelected) {
+      const selected = selectedProducts.filter(item => item.id !== product.id);
+      setSelectedProducts(selected);
+    } else {
+      setSelectedProducts(previous => [...previous, product]);
+    }
+  }
+
   return (
     <>
       <div className="orders-container">
         <StepsHeader />
-        <ProductsList products={products}/>
+        <ProductsList
+          products={products}
+          onSelectProduct={handleSelectProduct}
+          selectedProducts={selectedProducts}
+        />
         <OrderLocation onChangeLocation={location => seOrderLocation(location)} />
-        <OrderSummary />
+        <OrderSummary 
+          amount={selectedProducts.length} 
+          totalPrice={totalPrice}
+        />
       </div>
 
       <Footer />
