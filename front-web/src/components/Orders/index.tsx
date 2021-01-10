@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import StepsHeader from './SetpsHeader';
 import ProductsList from './ProductsList';
 import OrderLocation from './OrderLocation';
+import OrderSummary from './OrderSummary';
+import Footer from '../Footer';
 
 import './styles.css';
 
@@ -24,11 +26,16 @@ function Orders() {
   }, []);
 
   return (
-    <div className="orders-container">
-      <StepsHeader />
-      <ProductsList products={products}/>
-      <OrderLocation onChangeLocation={location => seOrderLocation(location)} />
-    </div>
+    <>
+      <div className="orders-container">
+        <StepsHeader />
+        <ProductsList products={products}/>
+        <OrderLocation onChangeLocation={location => seOrderLocation(location)} />
+        <OrderSummary />
+      </div>
+
+      <Footer />
+    </>
   );
 }
 
